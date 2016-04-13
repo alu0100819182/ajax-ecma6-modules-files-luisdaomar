@@ -25,39 +25,34 @@ const fillTable = (data) => {
 /* Volcar en la textarea de entrada
  * #original el contenido del fichero fileName */
 const dump = (fileName) => {
-  XXXXXXXXXXXXXXX XXXXXXXX XXXXXX X
-      XXXXXXXXXXXXXXXXXXXXXXXXX XXXXX XXXX 
-  XXX
+  function  dump(fileName) {$.ajax({
+            url : fileName,
+            dataType: "text",
+            success : function (data) {
+                $("#original").val(data);
+            }
+        });
+      }
 };
 
 const handleFileSelect = (evt) => {
   evt.stopPropagation();
   evt.preventDefault();
-
- XXX XXXXX X XXXXXXXXXXXXXXXXX
-
-  XXX XXXXXX X XXX XXXXXXXXXXXXX
-  XXXXXXXXXXXXX X XXX XX X
-  XXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  XX
-  XXXXXXXXXXXXXXXXXXXXXXXXXXX
+  var files = evt.target.files; // FileList object.
+       // files is a FileList of File objects. List some properties.
+  var template = _.template(usageList.innerHTML);
+  document.getElementById('result').innerHTML = template({ files : files});
 }
 
 /* Drag and drop: el fichero arrastrado se vuelca en la textarea de entrada */
 const handleDragFileSelect = (evt) => {
+
   evt.stopPropagation();
   evt.preventDefault();
-
-  XXX XXXXX X XXXXXXXXXXXXXXXXXXXXXXX XX XXXXXXXX XXXXXXX
-
-  XXX XXXXXX X XXX XXXXXXXXXXXXX
-  XXXXXXXXXXXXX X XXX XX X
-
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXXXXXX X XXXXXXXX
-  XX
-  XXXXXXXXXXXXXXXXXXXXXXXXXXX
+  var files = evt.dataTransfer.files; // FileList object.
+       // files is a FileList of File objects. List some properties.
+  var template = _.template(usageList.innerHTML);
+  document.getElementById('result').innerHTML = template({ files : files});
 }
 
 const handleDragOver = (evt) => {
