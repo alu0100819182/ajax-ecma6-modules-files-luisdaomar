@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
 
 app.get('/csv', (request, response) => {
   //XXXXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXX
-  response.render('csv', {title: 'CSV'});
+  response.send ({"rows": calculate(request.query.input)});
 });
 
 app.listen(app.get('port'), () => {

@@ -24,25 +24,25 @@ const fillTable = (data) => {
 
 /* Volcar en la textarea de entrada
  * #original el contenido del fichero fileName */
- const dump = (fileName) => {
-   $.get(fileName, function (data) {
-       $("#original").val(data);
-   });
- };
+const dump = (fileName) => {
+  $.get(fileName, function (data) {
+      $("#original").val(data);
+  });
+};
 
- const handleFileSelect = (evt) => {
-   evt.stopPropagation();
-   evt.preventDefault();
+const handleFileSelect = (evt) => {
+  evt.stopPropagation();
+  evt.preventDefault();
 
-  var files = evt.target.files;
+ var files = evt.target.files;
 
-   var reader = new FileReader();
-   reader.onload = (e) => {
+  var reader = new FileReader();
+  reader.onload = (e) => {
 
-     $("#original").val(e.target.result);
-   };
-   reader.readAsText(files[0])
- }
+    $("#original").val(e.target.result);
+  };
+  reader.readAsText(files[0])
+}
 
 /* Drag and drop: el fichero arrastrado se vuelca en la textarea de entrada */
 const handleDragFileSelect = (evt) => {
@@ -71,16 +71,14 @@ $(document).ready(() => {
     if (window.localStorage && localStorage.original) {
       original.value = localStorage.original;
     }
-
-    /* Request AJAX para que se calcule la tabla */
     $("#parse").click( () => {
-       if (window.localStorage) localStorage.original = original.value;
-       $.get("/csv", /* Request AJAX para que se calcule la tabla */
-         { input: original.value },
-         fillTable,
-         'json'
-       );
-  });
+        if (window.localStorage) localStorage.original = original.value;
+        $.get("/csv", /* Request AJAX para que se calcule la tabla */
+          { input: original.value },
+          fillTable,
+          'json'
+        );
+   });
    /* botones para rellenar el textarea */
    $('button.example').each( (_,y) => {
      $(y).click( () => { dump(`${$(y).text()}.txt`); });
