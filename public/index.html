@@ -2,35 +2,34 @@
   <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <title>CSV Analyzer</title>
-     <link href="sass.css" rel="stylesheet" type="text/css">
+     <!--<link href="sass.css" rel="stylesheet" type="text/css">-->
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
      <script type="text/javascript" src="csv.js"></script>
-     <script type="text/javascript" src="main.js"></script>
-     <script type="text/html" id='fillTable'>
-       <table id="result" class="center">
-         <% _.each(items, function(name) { %>
-           <tr class="<%= name.rowClass %>">
-             <% _.each(name.value, function(cell) { %>
-               <td><%= cell %></td>
-             <% }); %>
-           </tr>
-         <% }); %>
-       </table>
-     </script>
   </head>
   <body>
-    <h1 align="center">Comma Separated Value Analyzer</h1>
-    <div align="center">
-      <p><i> Go to the <a href="https://github.com/crguezl/csv">repo</a>.</i></p>
-      <i>Write a CSV string. Click the table button. The program outputs a table with the specified data.</i>
+    <div class="contenido_total">
+    <div class="titulo_practica">
+      <h1 align="center">
+        <font color="blue">Comma Separated Values (CSV) Analyzer with Ajax</font>
+      </h1>
+      <hr>
     </div>
-    <table class="center" id="input">
-      <tr>
-        <th>CSV string:</th> <!-- autofocus attribute is HTML5 -->
-        <td><textarea autofocus cols = "80" rows = "5" id="original"></textarea></td>
-      </tr>
-      <tr>
+    <div class="contenido">
+      <table class="center" id="input">
+        <tr><th>Escriba aquí una entrada CSV o bien</th></tr>
+        <tr><th>Arrastre un fichero CSV hasta la zona de entrada</th></tr>
+        <tr>
+          <th>
+            <textarea class = "drop_zone" autofocus="" cols = "80" rows = "5" id="original"></textarea>
+          </th>
+          <th>
+            <button type="button" id="parse"> Analizar!</button>
+          </th>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
           <th>
             <div class="example">
               Click para cargar ejemplos:
@@ -39,13 +38,18 @@
               <button class ="example" type="button">input3</button>
             </div>
           </th>
-      </tr>
-      <tr>
-        <th>
-            Cargar archivo:
-            <input type="file" class="inputfile" />
-        </th>
-      </tr>
-    </table>
+        </tr>
+        <tr>
+          <th>
+              Cargar archivo:
+              <input type="file" class="inputfile" />
+          </th>
+        </tr>
+      </table>
+
+      <div class="output" id="finaltable">
+      </div>
+    </div>
+  </div>
   </body>
 </html>

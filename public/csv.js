@@ -30,34 +30,34 @@ const fillTable = (data) => {
    });
  };
 
-const handleFileSelect = (evt) => {
-  evt.stopPropagation();
-  evt.preventDefault();
-  var files = evt.target.files; // FileList object.
-       // files is a FileList of File objects. List some properties.
-       var reader = new FileReader();
-       reader.onload = (e) => {
+ const handleFileSelect = (evt) => {
+   evt.stopPropagation();
+   evt.preventDefault();
 
-         $("#original").val(e.target.result);
-       };
-       reader.readAsText(files[0])
-     }
-}
+  var files = evt.target.files;
+
+   var reader = new FileReader();
+   reader.onload = (e) => {
+
+     $("#original").val(e.target.result);
+   };
+   reader.readAsText(files[0])
+ }
 
 /* Drag and drop: el fichero arrastrado se vuelca en la textarea de entrada */
 const handleDragFileSelect = (evt) => {
-
   evt.stopPropagation();
   evt.preventDefault();
-  var files = evt.dataTransfer.files; // FileList object.
-       // files is a FileList of File objects. List some properties.
-       var reader = new FileReader();
-       reader.onload = (e) => {
 
-         $("#original").val(e.target.result);
-         evt.target.style.background = "white";
-       };
-       reader.readAsText(files[0])
+  var files = evt.dataTransfer.files; // FileList object.
+
+  var reader = new FileReader();
+  reader.onload = (e) => {
+
+    $("#original").val(e.target.result);
+    evt.target.style.background = "white";
+  };
+  reader.readAsText(files[0])
 }
 
 const handleDragOver = (evt) => {
