@@ -19,7 +19,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/csv', (request, response) => {
-  //XXXXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXX
+  //XXXXXXXXXXXXXXX XXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
   response.send ({"rows": calculate(request.query.input)});
 });
 
