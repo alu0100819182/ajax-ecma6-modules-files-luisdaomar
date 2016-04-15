@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -17,7 +15,7 @@ const calculate = require('./models/calculate.js');
 
 app.get('/', (request, response) => {
   //XXXXXXXXXXXXXXXXXXXXXXXX X XXXXXX XXXX XXXXXXXXX
-  response.render('index', {title: 'CSV'});
+  response.render('index', {title: 'CSV con ajax'});
 });
 
 app.get('/csv', (request, response) => {
