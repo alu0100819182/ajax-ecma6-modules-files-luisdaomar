@@ -31,17 +31,17 @@ const dump = (fileName) => {
 };
 
 const handleFileSelect = (evt) => {
-  evt.stopPropagation();
-  evt.preventDefault();
+  evt.stopPropagation();    //Detiene la propagación po el DOM
+  evt.preventDefault();    //Evita que se active la funciones por defecto
 
  var files = evt.target.files;
 
   var reader = new FileReader();
-  reader.onload = (e) => {
+  reader.onload = (e) => {              //Estas lineas son las encargadas para cargar y preparar el fichero para ser leido
 
     $("#original").val(e.target.result);
   };
-  reader.readAsText(files[0])
+  reader.readAsText(files[0]) //lee el fichero
 }
 
 /* Drag and drop: el fichero arrastrado se vuelca en la textarea de entrada */
@@ -80,8 +80,8 @@ $(document).ready(() => {
         );
    });
    /* botones para rellenar el textarea */
-   $('button.example').each( (_,y) => {
-     $(y).click( () => { dump(`${$(y).text()}.txt`); });
+   $('button.example').each( (_,y) => {     //Se llama a la clase example(contiene los botones declarados en el html5.El underscores es usado ya que a la funcion es obligatoria pasarle un parametro pero ese nos da igual.La y hace referencia al elemento que se llama )
+     $(y).click( () => { dump(`${$(y).text()}.txt`); }); //Cuando se clickea en elemento y se activa la funcion dump y se le pasa el nombre del elemento concatenado con txt
    });
 
     // Setup the drag and drop listeners.
